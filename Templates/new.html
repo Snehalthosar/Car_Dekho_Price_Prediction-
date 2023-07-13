@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Price Prediction</title>
+    <style>
+        body {
+            background-image: url("https://images.pexels.com/photos/15097792/pexels-photo-15097792/free-photo-of-expensive-car-in-close-up-photography.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .form-row label {
+            margin-right: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .prediction-output {
+            font-size: 30px;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Car Price Prediction</h1>
+        <form action="/Car_dekho/price_prediction" method="POST">
+            <div class="form-row">
+                <label for="Year">Year:</label>
+                <input type="number" id="Year" name="Year" required>
+            </div>
+
+            <div class="form-row">
+                <label for="Present_Price">Present Price:</label>
+                <input type="number" step="0.01" id="Present_Price" name="Present_Price" required>
+            </div>
+
+            <div class="form-row">
+                <label for="Kms_Driven">Kilometers Driven:</label>
+                <input type="number" id="Kms_Driven" name="Kms_Driven" required>
+            </div>
+
+            <div class="form-row">
+                <label for="Fuel_Type">Fuel Type:</label>
+                <select id="Fuel_Type" name="Fuel_Type" required>
+                    <option value="CNG">CNG</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Petrol">Petrol</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label for="Seller_Type">Seller Type:</label>
+                <select id="Seller_Type" name="Seller_Type" required>
+                    <option value="Dealer">Dealer</option>
+                    <option value="Individual">Individual</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label for="Transmission">Transmission:</label>
+                <select id="Transmission" name="Transmission" required>
+                    <option value="Manual">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label for="Owner">Owner:</label>
+                <input type="number" id="Owner" name="Owner" required>
+            </div>
+
+            <input type="submit" value="Predict Price">
+        </form>
+    
+        {% if prediction %}
+            <h2>Predicted Car Price:</h2>
+            <p><strong>{{ prediction }}/-Lakh</strong></p>
+        {% endif %}
+    </div>
+</body>
+</html>
